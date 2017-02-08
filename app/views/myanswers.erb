@@ -1,0 +1,17 @@
+<h1>Aqui estan todas tus respuestas</h1>
+<ul>
+  <li><a href="/users/<%=session[:id]%>">Home</a></li>
+  <li><a href="/my_questions">Mis preguntas</a></li>
+  <li><a href="/my_answers">Mis respuestas</a></li>
+  <li><a href="/user_profile">Ver mi perfil</a></li>
+  <li><a href="/logout">Logout</a></li>
+</ul>
+
+
+<% @answers.each_with_index do |answer, index| %>
+  <% question = Question.find_by(id: answer.question_id)%>
+  <p><%= "#{index+1}.- #{question.question_text}" %></p> 
+  <p><%= answer.answer_text %></p> 
+<% end%>
+
+

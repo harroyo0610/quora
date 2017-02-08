@@ -1,0 +1,15 @@
+<ul>
+  <li><a href="/users/<%=session[:id]%>">Home</a></li>
+  <li><a href="/my_questions">Mis preguntas</a></li>
+  <li><a href="/my_answers">Mis respuestas</a></li>
+  <li><a href="/user_profile">Ver mi perfil</a></li>
+  <li><a href="/logout">Logout</a></li>
+</ul>
+
+
+<h1>Bienvido a ver tu perfil</h1>
+<% user = User.find_by(id: @current_user) %>
+<h2>Username: </h2>
+<h3><%= user.user_name %></h3>
+<h2>Email: </h2>
+<h3><%= user.email %></h3>

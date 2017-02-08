@@ -1,0 +1,43 @@
+<h1>Bienvenido a QUORA</h1>
+
+<ul>
+  <li><a href="/users/<%=session[:id]%>">Home</a></li>
+  <li><a href="/my_questions">Mis preguntas</a></li>
+  <li><a href="/my_answers">Mis respuestas</a></li>
+  <li><a href="/user_profile">Ver mi perfil</a></li>
+  <li><a href="/logout">Logout</a></li>
+</ul>
+
+
+<form method="post" action="/create_question">
+  <h3>Crea una pregunta</h3>
+  <input name="question_user" type="question" placeholder="Crea una pregunta" size="70">
+  <br><br>
+  <input type="submit" value="Crear Pregunta">
+</form>
+
+
+
+<div>
+  <% Question.all.reverse_each do |question| %>
+  <% user_question = Question.find_by(id: question.id).vote_questions %>
+  <% positive_vote = user_question.where(type_vote: "true") %>
+  <% negative_vote = user_question.where(type_vote: "false") %>
+  
+    <h3><%= question.question_text %></h3>
+
+    <a id="votes_positives" value="<%= question.id %>" href="/positive_vote/"><button id="val-positive" value="<%= positive_vote.count %>"> <%= positive_vote.count %> - Voto Positivo</button></a>
+
+    <a id="votes_negatives" value="<%= question.id %>" href="/negative_vote/"><button id="val-negative" value="<%= negative_vote.count %>"> <%= negative_vote.count %> - Voto Negativo</button></a>
+
+    <a href="/show_question"><button>Ver Respuestas</button></a>
+    <p>Responder: </p>
+    <form method="post" action="/add_answer/<%=question.id %>">
+      <textarea placeholder="Escribe una respuesta" name="answer" cols="70"></textarea>
+      <input type="submit" value="Enviar respuesta">
+    </form>
+    <hr>
+  <% end %>
+</div>
+
+  

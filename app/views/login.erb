@@ -1,0 +1,11 @@
+ <h1>Ingresa tus datos para acceder al sitio</h1>
+<p> <%= @message_error %></p>
+<form action="/login" method="post">
+  <p>Ingresa tu emial:</p>
+  <input name="user_email" type="email" placeholder="Ingresa tu email">
+  <p>Ingresa tu password:</p>
+  <input name="user_password" type="password" placeholder="Ingresa tu password">
+  <br>
+  <br>
+  <input type="submit">
+</form>

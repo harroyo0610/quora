@@ -1,0 +1,5 @@
+user_1 = User.create(user_name: "humberto", email: "humberto@gmail.com", password: "humberto")
+question_1 = Question.create(user_id: user_1.id, question_text: "¿fjkvh3eb3?")
+answer_1 = Answer.create(question_id: question_1.id, user_id: user_1.id, answer_text: "fihewdgherfwdew")
+vote_answer_1 = VoteAnswer.create(answer_id: answer_1.id, type_vote: true)
+vote_question_1 = VoteQuestion.create(question_id: question_1.id, type_vote: false)
